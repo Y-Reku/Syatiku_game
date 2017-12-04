@@ -14,7 +14,7 @@
 			image.src ='shachiku.png';
 			var yoko = 270;
 			var tate = 220;
-			var move = -4;
+			var move =　0;
 
 			function moveShachiku(){
 				if(tate < 100){
@@ -31,6 +31,11 @@
 				var canvas = document.getElementById('canvas');
 				context = canvas.getContext('2d');
 
+				canvas.addEventListener('click',function(e){
+					if (move == 0) {
+						move = -4;
+					}
+				});
 				//context.drawImage(image,yoko,tate);
 				loop();
 			}
