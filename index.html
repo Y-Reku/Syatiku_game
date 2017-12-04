@@ -17,7 +17,14 @@
 			var move = -4;
 
 			function moveShachiku(){
+				if(tate < 100){
+					move = 4;
+				}
 				tate = tate + move;
+				if(tate > 220){
+					tate = 220;
+					move = -4;
+				}
 			}
 
 			function start(){
