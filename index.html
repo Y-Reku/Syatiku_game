@@ -22,6 +22,18 @@
 			var enemyTate = 330;
 			var enemyMove = 5;
 
+			function fireEnemy(){
+				var rand = Math.floor(Math.random() * 2);
+
+				if(rand == 1){
+					enemyYoko = -43;
+					enemyMove = 5;
+				}else{
+					enemyYoko = 640;
+					enemyMove = -5;
+				}
+			}
+
 			function moveShachiku(){
 				if(tate < 100){
 					move = 4;
@@ -49,8 +61,14 @@
 			function loop(){
 				moveShachiku();
 
-				enemyYoko = enemyYoko + enemyMove;
+				if(enemyMove == 0){
+					fireEnemy();
+				}
 
+				enemyYoko = enemyYoko + enemyMove;
+				if(enemyYoko < -43 || enemyYoko > 640){
+					enemyMove = 0;
+				}
 
 				context.clearRect(0,0,640,360);
 				context.drawImage(image,yoko,tate);
