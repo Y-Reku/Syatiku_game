@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<meta charset='utf-8'/>
-	<title>動く社畜ちゃん</title>
+	<title>避けろ社畜ちゃん</title>
 		<style>
 			canvas{
 				background: pink;
@@ -11,10 +11,16 @@
 		<script>
 			var context;
 			var image = new Image();
-			image.src ='shachiku.png';
+			image.src = 'shachiku.png';
 			var yoko = 270;
 			var tate = 220;
 			var move =　0;
+
+			var enemyImage = new Image();
+			enemyImage.src = 'enemy.png';
+			var enemyYoko = 0;
+			var enemyTate = 330;
+			var enemyMove = 5;
 
 			function moveShachiku(){
 				if(tate < 100){
@@ -43,8 +49,12 @@
 			function loop(){
 				moveShachiku();
 
+				enemyYoko = enemyYoko + enemyMove;
+
+
 				context.clearRect(0,0,640,360);
 				context.drawImage(image,yoko,tate);
+				context.drawImage(enemyImage, enemyYoko, enemyTate);
 
 				window.requestAnimationFrame(loop);
 			}
