@@ -14,13 +14,29 @@
 			image.src ='shachiku.png';
 			var yoko = 270;
 			var tate = 220;
+			var move = -4;
+
+			function moveShachiku(){
+				tate = tate + move;
+			}
 
 			function start(){
 				var canvas = document.getElementById('canvas');
 				context = canvas.getContext('2d');
 
-				context.drawImage(image,yoko,tate);
+				//context.drawImage(image,yoko,tate);
+				loop();
 			}
+
+			function loop(){
+				moveShachiku();
+
+				context.clearRect(0,0,640,360);
+				context.drawImage(image,yoko,tate);
+
+				window.requestAnimationFrame(loop);
+			}
+
 		</script>
 	</head>
 	<body onload = 'start()'>
