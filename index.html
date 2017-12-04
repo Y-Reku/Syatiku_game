@@ -21,6 +21,21 @@
 			var enemyYoko = 0;
 			var enemyTate = 330;
 			var enemyMove = 5;
+			var gameover = 0;
+
+			function checkHit(){
+				var sx1 = yoko;
+				var sx2 = yoko + 100;
+				var ex1 = enemyYoko;
+				var ex2 = enemyYoko + 43;
+				var ashi = tate + 140;
+
+				if (sx1 < ex2 && ex1 < sx2) {
+					if (ashi > 330) {
+						gameover = 1;
+					}
+				}
+			}
 
 			function fireEnemy(){
 				var rand = Math.floor(Math.random() * 2);
@@ -74,7 +89,13 @@
 				context.drawImage(image,yoko,tate);
 				context.drawImage(enemyImage, enemyYoko, enemyTate);
 
-				window.requestAnimationFrame(loop);
+				checkHit();
+
+				if (gameover == 1) {
+					context.fillText('ゲームオーバー！', 50, 100);
+				}else{
+					window.requestAnimationFrame(loop);
+				}
 			}
 
 		</script>
